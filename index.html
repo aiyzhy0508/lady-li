@@ -93,7 +93,7 @@
         }
 
         .section {
-            padding: 104px 0;
+            padding: 110px 0;
             scroll-margin-top: 92px
         }
 
@@ -120,7 +120,13 @@
             margin: 18px 0 0
         }
 
-        .h2 em {
+        .h2-xl {
+            font-size: clamp(2.6rem, 6.2vw, 4.8rem);
+            margin: 18px 0 0
+        }
+
+        .h2 em,
+        .h2-xl em {
             font-style: italic;
             color: var(--wine)
         }
@@ -200,6 +206,68 @@
         .btn-sm {
             padding: 11px 20px;
             font-size: 13.5px
+        }
+
+        .btn-lg {
+            padding: 19px 36px;
+            font-size: 16px
+        }
+
+        /* HERO CTA — главный акцент сайта */
+        .btn-hero {
+            background: var(--wine);
+            color: #F7EFE6;
+            font-size: 16.5px;
+            font-weight: 700;
+            padding: 21px 42px;
+            letter-spacing: .01em;
+            animation: heroPulse 3.2s ease-in-out infinite
+        }
+
+        .btn-hero:hover {
+            background: var(--wine-dark);
+            transform: translateY(-3px)
+        }
+
+        .btn-hero .arr {
+            font-size: 18px
+        }
+
+        @keyframes heroPulse {
+
+            0%,
+            100% {
+                box-shadow: 0 14px 30px rgba(110, 43, 59, .30), 0 0 0 0 rgba(110, 43, 59, .22)
+            }
+
+            50% {
+                box-shadow: 0 22px 46px rgba(110, 43, 59, .42), 0 0 0 12px rgba(110, 43, 59, 0)
+            }
+        }
+
+        .hero-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--ink);
+            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(38, 33, 29, .35);
+            transition: color .3s, border-color .3s
+        }
+
+        .hero-ghost:hover {
+            color: var(--wine);
+            border-color: var(--wine)
+        }
+
+        .hero-ghost .arr {
+            transition: transform .3s
+        }
+
+        .hero-ghost:hover .arr {
+            transform: translateX(5px)
         }
 
         /* progress + header */
@@ -379,7 +447,7 @@
 
         /* hero */
         .hero {
-            padding: 170px 0 90px;
+            padding: 175px 0 95px;
             position: relative;
             overflow: hidden
         }
@@ -404,7 +472,7 @@
         }
 
         .hero h1 {
-            font-size: clamp(2.8rem, 6.2vw, 4.9rem);
+            font-size: clamp(2.9rem, 6.4vw, 5rem);
             font-weight: 600
         }
 
@@ -414,20 +482,21 @@
         }
 
         .hero .lead {
-            margin: 26px 0 34px
+            margin: 26px 0 38px
         }
 
         .hero-actions {
             display: flex;
-            gap: 14px;
-            flex-wrap: wrap
+            gap: 30px;
+            flex-wrap: wrap;
+            align-items: center
         }
 
         .hero-proof {
             display: flex;
             flex-wrap: wrap;
             gap: 10px 26px;
-            margin-top: 52px;
+            margin-top: 56px;
             padding-top: 26px;
             border-top: 1px solid var(--line)
         }
@@ -492,18 +561,18 @@
             min-width: 210px
         }
 
-        .hero-card .serif {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-top: 8px;
-            line-height: 1.25
-        }
-
         .hero-card .big {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2rem;
             font-weight: 700;
             color: var(--wine)
+        }
+
+        .hero-card .serif {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 6px;
+            line-height: 1.25
         }
 
         /* ticker */
@@ -545,87 +614,79 @@
             }
         }
 
-        /* needs */
-        .needs-grid {
+        /* needs — editorial index */
+        .needs-list {
+            margin-top: 60px;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .needs-row {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-            margin-top: 52px
+            grid-template-columns: 70px 1fr auto;
+            gap: 22px;
+            align-items: center;
+            padding: 28px 8px;
+            border-top: 1px solid var(--line);
+            transition: background .3s, padding .3s
         }
 
-        .need-card {
-            background: var(--ivory2);
+        .needs-row .n {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--taupe);
+            transition: color .3s
+        }
+
+        .needs-row h3 {
+            font-size: clamp(1.5rem, 2.4vw, 2rem);
+            transition: color .3s
+        }
+
+        .needs-row p {
+            font-size: .9rem;
+            color: var(--muted);
+            margin-top: 3px;
+            max-width: 560px
+        }
+
+        .needs-row .go {
+            width: 48px;
+            height: 48px;
             border: 1px solid var(--line);
-            border-radius: var(--radius);
-            padding: 28px 26px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            transition: transform .35s, border-color .35s, box-shadow .35s;
-            position: relative
-        }
-
-        .need-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--wine);
-            box-shadow: var(--shadow)
-        }
-
-        .need-card .ic {
-            width: 44px;
-            height: 44px;
             border-radius: 50%;
-            border: 1px solid var(--line);
             display: grid;
             place-items: center;
-            color: var(--wine);
-            transition: .35s
+            font-size: 17px;
+            color: var(--ink);
+            transition: .35s;
+            flex: none
         }
 
-        .need-card:hover .ic {
+        .needs-row:hover {
+            background: var(--ivory2)
+        }
+
+        .needs-row:hover .n {
+            color: var(--wine)
+        }
+
+        .needs-row:hover h3 {
+            color: var(--wine)
+        }
+
+        .needs-row:hover .go {
             background: var(--wine);
+            border-color: var(--wine);
             color: var(--ivory);
-            border-color: var(--wine)
-        }
-
-        .need-card .ic svg {
-            width: 20px;
-            height: 20px
-        }
-
-        .need-card h3 {
-            font-size: 1.4rem;
-            font-weight: 600
-        }
-
-        .need-card p {
-            font-size: .9rem;
-            color: var(--muted)
-        }
-
-        .need-card .go {
-            margin-top: auto;
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--wine);
-            display: flex;
-            align-items: center;
-            gap: 8px
-        }
-
-        .need-card .go .arr {
-            transition: transform .3s
-        }
-
-        .need-card:hover .go .arr {
-            transform: translateX(5px)
+            transform: translateX(6px)
         }
 
         .needs-cta {
-            margin-top: 44px;
+            margin-top: 48px;
             display: flex;
             align-items: center;
-            gap: 22px;
+            gap: 26px;
             flex-wrap: wrap
         }
 
@@ -644,7 +705,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 26px;
-            margin-top: 56px
+            margin-top: 60px
         }
 
         .dir-card {
@@ -677,59 +738,129 @@
             transform: scale(1.05)
         }
 
-        .dir-num {
-            position: absolute;
-            top: 14px;
-            left: 14px;
-            background: rgba(245, 240, 232, .92);
-            border: 1px solid var(--line);
-            border-radius: 999px;
-            padding: 6px 14px;
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            font-size: .95rem;
-            color: var(--wine)
+        .dir-body {
+            padding: 28px 28px 30px
         }
 
-        .dir-body {
-            padding: 26px 26px 28px
+        .dir-body .n {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: var(--taupe);
+            font-size: 1rem
         }
 
         .dir-body h3 {
-            font-size: 1.6rem
+            font-size: 1.7rem;
+            margin-top: 6px
         }
 
-        .dir-body p {
-            color: var(--muted);
-            font-size: .95rem;
-            margin-top: 8px
+        .dir-body .benefit {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--wine);
+            line-height: 1.4;
+            margin-top: 10px
         }
 
         .dir-body .go {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            margin-top: 16px;
+            margin-top: 18px;
             font-size: 13.5px;
             font-weight: 700;
             color: var(--wine)
         }
 
         .cosmo-more {
-            margin-top: 44px;
+            margin-top: 46px;
             text-align: center
         }
 
-        /* consult dark */
+        /* also strip */
+        .also {
+            border-bottom: 1px solid var(--line);
+            background: var(--ivory)
+        }
+
+        .also-in {
+            display: flex;
+            align-items: center;
+            gap: 20px 40px;
+            flex-wrap: wrap;
+            padding: 46px 0
+        }
+
+        .also-label {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .24em;
+            text-transform: uppercase;
+            color: var(--taupe)
+        }
+
+        .also-list {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 6px 0
+        }
+
+        .also-list a {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.35rem, 2.2vw, 1.8rem);
+            font-weight: 600;
+            color: var(--ink);
+            transition: color .3s;
+            white-space: nowrap
+        }
+
+        .also-list a:hover {
+            color: var(--wine)
+        }
+
+        .also-list a:not(:first-child)::before {
+            content: "·";
+            color: var(--wine);
+            padding: 0 14px
+        }
+
+        .also-all {
+            margin-left: auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--wine);
+            white-space: nowrap
+        }
+
+        .also-all .arr {
+            transition: transform .3s
+        }
+
+        .also-all:hover .arr {
+            transform: translateX(5px)
+        }
+
+        /* consult dark — мощная секция */
         .dark {
             background: #211C18;
             color: #EFE7DB;
-            background-image: radial-gradient(700px 460px at 88% 8%, rgba(110, 43, 59, .4), transparent 62%)
+            background-image: radial-gradient(760px 520px at 88% 8%, rgba(110, 43, 59, .45), transparent 62%)
+        }
+
+        .consult {
+            padding: 130px 0;
+            position: relative;
+            overflow: hidden
         }
 
         .consult-grid {
             display: grid;
-            grid-template-columns: 1.1fr .9fr;
+            grid-template-columns: 1.15fr .85fr;
             gap: 70px;
             align-items: center
         }
@@ -742,34 +873,48 @@
             background: var(--rose)
         }
 
-        .consult h2 {
-            font-size: clamp(2.2rem, 4.6vw, 3.6rem)
+        .consult-h2 {
+            font-size: clamp(2.3rem, 4.6vw, 3.8rem);
+            line-height: 1.06;
+            margin-top: 22px
         }
 
-        .consult h2 em {
-            color: var(--rose)
+        .consult-help {
+            font-size: clamp(3.6rem, 8.4vw, 7rem);
+            font-style: italic;
+            font-weight: 600;
+            color: var(--rose);
+            line-height: 1;
+            margin-top: 14px
         }
 
         .consult .q {
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            font-size: clamp(1.2rem, 2vw, 1.5rem);
-            line-height: 1.45;
+            font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+            line-height: 1.6;
             color: #D9CCBE;
-            margin-top: 26px;
+            margin-top: 30px;
             max-width: 520px
         }
 
-        .consult .btn {
-            margin-top: 36px
+        .consult-actions {
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            flex-wrap: wrap
         }
 
-        .consult-media img {
-            width: 100%;
-            aspect-ratio: 4/5;
-            object-fit: cover;
-            border-radius: var(--radius);
-            border: 1px solid var(--line-light)
+        .consult-call {
+            font-size: 14.5px;
+            color: #D9CCBE;
+            border-bottom: 1px solid rgba(217, 204, 190, .4);
+            padding-bottom: 3px;
+            transition: .3s
+        }
+
+        .consult-call:hover {
+            color: #fff;
+            border-color: #fff
         }
 
         .consult-media {
@@ -782,6 +927,14 @@
             transform: translate(-16px, 16px);
             border: 1px solid rgba(201, 167, 156, .4);
             border-radius: var(--radius)
+        }
+
+        .consult-media img {
+            width: 100%;
+            aspect-ratio: 4/4.7;
+            object-fit: cover;
+            border-radius: var(--radius);
+            border: 1px solid var(--line-light)
         }
 
         /* prices */
@@ -837,46 +990,111 @@
             align-items: center
         }
 
-        /* why */
-        .why-grid {
+        /* why — доказательства */
+        .why-head {
+            max-width: 720px
+        }
+
+        .stats-band {
             display: grid;
-            grid-template-columns: .9fr 1.1fr;
-            gap: 70px;
-            align-items: start
+            grid-template-columns: repeat(5, 1fr);
+            margin-top: 64px;
+            border-block: 1px solid var(--line)
         }
 
-        .why-left {
-            position: sticky;
-            top: 110px
+        .stat {
+            padding: 36px 24px;
+            border-left: 1px solid var(--line)
         }
 
-        .why-item {
-            display: grid;
-            grid-template-columns: 64px 1fr;
-            gap: 22px;
-            padding: 30px 6px;
-            border-top: 1px solid var(--line)
+        .stat:first-child {
+            border-left: 0;
+            padding-left: 8px
         }
 
-        .why-item:last-child {
-            border-bottom: 1px solid var(--line)
-        }
-
-        .why-item .n {
+        .stat .v {
             font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            font-size: 1.5rem;
-            color: var(--wine)
+            font-size: clamp(2.4rem, 4.2vw, 3.6rem);
+            font-weight: 700;
+            color: var(--wine);
+            line-height: 1;
+            white-space: nowrap
         }
 
-        .why-item h3 {
-            font-size: 1.5rem
-        }
-
-        .why-item p {
+        .stat .l {
+            font-size: 13px;
             color: var(--muted);
-            font-size: .95rem;
-            margin-top: 6px
+            margin-top: 10px;
+            line-height: 1.45
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            margin-top: 56px
+        }
+
+        .proof-col {
+            padding: 8px 34px 8px 0
+        }
+
+        .proof-col:not(:first-child) {
+            border-left: 1px solid var(--line);
+            padding-left: 34px
+        }
+
+        .proof-col .k {
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: var(--wine);
+            margin-bottom: 18px
+        }
+
+        .proof-row {
+            display: flex;
+            gap: 13px;
+            align-items: flex-start;
+            padding: 13px 0;
+            border-top: 1px solid var(--line);
+            font-size: .93rem;
+            color: var(--ink)
+        }
+
+        .proof-row:first-of-type {
+            border-top: 0
+        }
+
+        .proof-row .ic {
+            flex: none;
+            width: 22px;
+            height: 22px;
+            border: 1px solid rgba(110, 43, 59, .4);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: var(--wine);
+            font-size: 11px;
+            margin-top: 1px
+        }
+
+        .proof-row b {
+            display: block;
+            font-size: .97rem
+        }
+
+        .proof-row .sub {
+            display: block;
+            font-size: 12.5px;
+            color: var(--taupe);
+            margin-top: 2px
+        }
+
+        .proof-note {
+            margin-top: 30px;
+            font-size: 12px;
+            color: var(--taupe)
         }
 
         /* team */
@@ -1302,71 +1520,73 @@
             object-fit: cover
         }
 
-        /* services */
-        .srv-grid {
+        /* catalog */
+        .cat-list {
+            margin-top: 60px;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .cat-row {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 56px
+            grid-template-columns: 80px 1fr auto;
+            gap: 24px;
+            align-items: center;
+            padding: 32px 8px;
+            border-top: 1px solid var(--line);
+            transition: background .3s
         }
 
-        .srv-card {
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            background: var(--ivory2);
-            padding: 30px 28px;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            transition: transform .35s, border-color .35s, box-shadow .35s
+        .cat-row:hover {
+            background: var(--ivory2)
         }
 
-        .srv-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--wine);
-            box-shadow: var(--shadow)
-        }
-
-        .srv-card .top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center
-        }
-
-        .srv-card .n {
+        .cat-row .n {
             font-family: 'Cormorant Garamond', serif;
             font-style: italic;
+            font-size: 1.25rem;
             color: var(--taupe)
         }
 
-        .srv-card h3 {
-            font-size: 1.7rem
+        .cat-row h3 {
+            font-size: clamp(1.7rem, 3vw, 2.3rem)
         }
 
-        .srv-card .subs {
+        .cat-row .subs {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px
+            gap: 6px 0;
+            margin-top: 8px;
+            font-size: 13.5px;
+            color: var(--muted)
         }
 
-        .srv-card .subs span {
-            font-size: 12px;
-            color: var(--muted);
-            border: 1px solid var(--line);
-            border-radius: 999px;
-            padding: 5px 12px;
-            background: var(--ivory)
+        .cat-row .subs span:not(:first-child)::before {
+            content: "·";
+            padding: 0 9px;
+            color: var(--wine)
         }
 
-        .srv-card .go {
-            margin-top: auto;
-            padding-top: 14px;
+        .cat-row .go {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
             font-size: 13.5px;
             font-weight: 700;
             color: var(--wine);
-            display: flex;
-            align-items: center;
-            gap: 8px
+            white-space: nowrap
+        }
+
+        .cat-row .go .arr {
+            transition: transform .3s
+        }
+
+        .cat-row:hover .go .arr {
+            transform: translateX(5px)
+        }
+
+        .cat-foot {
+            margin-top: 44px;
+            text-align: center
         }
 
         /* birthday */
@@ -1788,12 +2008,25 @@
 
         /* responsive */
         @media(max-width:1080px) {
-            .needs-grid {
-                grid-template-columns: repeat(2, 1fr)
+            .stats-band {
+                grid-template-columns: repeat(3, 1fr)
             }
 
-            .srv-grid {
-                grid-template-columns: repeat(2, 1fr)
+            .stat:nth-child(4) {
+                border-left: 0;
+                padding-left: 8px
+            }
+
+            .proof-grid {
+                grid-template-columns: 1fr;
+                gap: 44px
+            }
+
+            .proof-col:not(:first-child) {
+                border-left: 0;
+                padding-left: 0;
+                border-top: 1px solid var(--line);
+                padding-top: 34px
             }
 
             .f-grid {
@@ -1829,14 +2062,9 @@
 
             .consult-grid,
             .about-grid,
-            .edu-grid,
-            .why-grid {
+            .edu-grid {
                 grid-template-columns: 1fr;
                 gap: 48px
-            }
-
-            .why-left {
-                position: static
             }
 
             .con-grid {
@@ -1852,20 +2080,16 @@
             }
 
             .section {
-                padding: 80px 0
+                padding: 84px 0
+            }
+
+            .consult {
+                padding: 100px 0
             }
         }
 
         @media(max-width:640px) {
-            .needs-grid {
-                grid-template-columns: 1fr
-            }
-
             .dir-grid {
-                grid-template-columns: 1fr
-            }
-
-            .srv-grid {
                 grid-template-columns: 1fr
             }
 
@@ -1897,11 +2121,48 @@
                 grid-template-columns: 1fr
             }
 
-            .hero-proof {
-                gap: 10px 18px
+            .stats-band {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .stat:nth-child(3) {
+                border-left: 0;
+                padding-left: 8px
+            }
+
+            .needs-row {
+                grid-template-columns: 1fr auto
+            }
+
+            .needs-row .n {
+                display: none
+            }
+
+            .cat-row {
+                grid-template-columns: 1fr
+            }
+
+            .cat-row .n {
+                display: none
+            }
+
+            .cat-row .go {
+                margin-top: 6px
+            }
+
+            .also-all {
+                margin-left: 0
             }
         }
     </style>
+    <noscript>
+        <style>
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important
+            }
+        </style>
+    </noscript>
 </head>
 
 <body>
@@ -1953,9 +2214,9 @@
                     <p class="lead">Современная косметология, уход и эстетические процедуры в Кызыле. Подбираем
                         процедуры не по трендам, а под состояние вашей кожи, ваши цели и желаемый результат.</p>
                     <div class="hero-actions">
-                        <a class="btn btn-primary" href="https://ladyli17.ru/" target="_blank" rel="noopener">Записаться
+                        <a class="btn btn-hero" href="https://ladyli17.ru/" target="_blank" rel="noopener">Записаться
                             <span class="arr">→</span></a>
-                        <a class="btn btn-outline" href="#cosmetology">Посмотреть услуги</a>
+                        <a class="hero-ghost" href="#cosmetology">Посмотреть услуги <span class="arr">→</span></a>
                     </div>
                     <div class="hero-proof">
                         <span class="p-item"><span class="stars" aria-hidden="true"><svg viewBox="0 0 20 20"
@@ -2019,92 +2280,74 @@
                 <div class="reveal">
                     <span class="num">01 /</span>
                     <span class="eyebrow" style="margin-left:16px">С чего начать</span>
-                    <h2 class="h2">С чем вы хотите <em>разобраться?</em></h2>
+                    <h2 class="h2-xl">С чем вы хотите<br><em>разобраться?</em></h2>
                     <p class="lead">Не обязательно знать названия процедур. Выберите то, что вас беспокоит, — остальное
                         мы возьмём на себя.</p>
                 </div>
-                <div class="needs-grid" data-stagger>
-                    <a class="need-card reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
-                        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 3c3.2 3.8 6 6.9 6 10a6 6 0 1 1-12 0c0-3.1 2.8-6.2 6-10z" />
-                                <path d="M9.5 13.5a2.5 2.5 0 0 0 2.5 2.5" />
-                            </svg></span>
-                        <h3>Акне и постакне</h3>
-                        <p>Комплексные программы для чистой и ровной кожи.</p>
-                        <span class="go">Подобрать процедуру <span class="arr">→</span></span>
+                <div class="needs-list" data-stagger>
+                    <a class="needs-row reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
+                        <span class="n">01</span>
+                        <div>
+                            <h3>Акне и постакне</h3>
+                            <p>Комплексные программы для чистой и ровной кожи.</p>
+                        </div>
+                        <span class="go">→</span>
                     </a>
-                    <a class="need-card reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
-                        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                                stroke-linecap="round">
-                                <circle cx="12" cy="12" r="3.6" />
-                                <path
-                                    d="M12 3v2.4M12 18.6V21M3 12h2.4M18.6 12H21M5.6 5.6l1.7 1.7M16.7 16.7l1.7 1.7M18.4 5.6l-1.7 1.7M7.3 16.7l-1.7 1.7" />
-                            </svg></span>
-                        <h3>Пигментация</h3>
-                        <p>Выравнивание тона, сияние и ровный цвет кожи.</p>
-                        <span class="go">Подобрать процедуру <span class="arr">→</span></span>
+                    <a class="needs-row reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
+                        <span class="n">02</span>
+                        <div>
+                            <h3>Пигментация</h3>
+                            <p>Выравнивание тона, сияние и ровный цвет кожи.</p>
+                        </div>
+                        <span class="go">→</span>
                     </a>
-                    <a class="need-card reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
-                        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M4 20C4 11 11 4 20 4c0 9-7 16-16 16z" />
-                                <path d="M4 20c4-6 8-10 12-12" />
-                            </svg></span>
-                        <h3>Возрастные изменения</h3>
-                        <p>Мягкая коррекция и профилактика — деликатно и естественно.</p>
-                        <span class="go">Подобрать процедуру <span class="arr">→</span></span>
+                    <a class="needs-row reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
+                        <span class="n">03</span>
+                        <div>
+                            <h3>Возрастные изменения</h3>
+                            <p>Мягкая коррекция и профилактика — деликатно и естественно.</p>
+                        </div>
+                        <span class="go">→</span>
                     </a>
-                    <a class="need-card reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
-                        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 19V5" />
-                                <path d="M5.5 11.5L12 5l6.5 6.5" />
-                            </svg></span>
-                        <h3>Потеря упругости</h3>
-                        <p>Лифтинг-уходы, тонус и восстановление контуров.</p>
-                        <span class="go">Подобрать процедуру <span class="arr">→</span></span>
+                    <a class="needs-row reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
+                        <span class="n">04</span>
+                        <div>
+                            <h3>Потеря упругости</h3>
+                            <p>Лифтинг-уходы, тонус и восстановление контуров.</p>
+                        </div>
+                        <span class="go">→</span>
                     </a>
-                    <a class="need-card reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
-                        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                                stroke-linecap="round">
-                                <path d="M4 9c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2" />
-                                <path d="M4 15c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2" />
-                            </svg></span>
-                        <h3>Сухость и обезвоженность</h3>
-                        <p>Глубокое увлажнение, питание и комфорт кожи.</p>
-                        <span class="go">Подобрать процедуру <span class="arr">→</span></span>
+                    <a class="needs-row reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
+                        <span class="n">05</span>
+                        <div>
+                            <h3>Сухость и обезвоженность</h3>
+                            <p>Глубокое увлажнение, питание и комфорт кожи.</p>
+                        </div>
+                        <span class="go">→</span>
                     </a>
-                    <a class="need-card reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
-                        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z" />
-                                <path d="M18.5 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2z" />
-                            </svg></span>
-                        <h3>Очищение и восстановление</h3>
-                        <p>Чистки, пилинги и профессиональные уходы.</p>
-                        <span class="go">Подобрать процедуру <span class="arr">→</span></span>
+                    <a class="needs-row reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
+                        <span class="n">06</span>
+                        <div>
+                            <h3>Очищение и восстановление</h3>
+                            <p>Чистки, пилинги и профессиональные уходы.</p>
+                        </div>
+                        <span class="go">→</span>
                     </a>
-                    <a class="need-card reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
-                        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20 4c-6 1-11 5-13.5 11L4 20l5-2.5C15 15 19 10 20 4z" />
-                                <path d="M9 15l-1-1" />
-                            </svg></span>
-                        <h3>Нежелательные волосы</h3>
-                        <p>Лазерная эпиляция — гладкость надолго и без раздражения.</p>
-                        <span class="go">Подобрать процедуру <span class="arr">→</span></span>
+                    <a class="needs-row reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
+                        <span class="n">07</span>
+                        <div>
+                            <h3>Нежелательные волосы</h3>
+                            <p>Лазерная эпиляция — гладкость надолго и без раздражения.</p>
+                        </div>
+                        <span class="go">→</span>
                     </a>
-                    <a class="need-card reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
-                        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="6" r="2.6" />
-                                <path d="M8 21c0-4 1.5-6 4-6s4 2 4 6" />
-                                <path d="M6.5 12.5c1.5-1 9.5-1 11 0" />
-                            </svg></span>
-                        <h3>Коррекция фигуры</h3>
-                        <p>Массажи и аппаратные методики для тела.</p>
-                        <span class="go">Подобрать процедуру <span class="arr">→</span></span>
+                    <a class="needs-row reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
+                        <span class="n">08</span>
+                        <div>
+                            <h3>Коррекция фигуры</h3>
+                            <p>Массажи и аппаратные методики для тела.</p>
+                        </div>
+                        <span class="go">→</span>
                     </a>
                 </div>
                 <div class="needs-cta reveal">
@@ -2128,45 +2371,50 @@
                 </div>
                 <div class="dir-grid" data-stagger>
                     <article class="dir-card reveal">
-                        <div class="dir-media"><span class="dir-num">01</span><img
+                        <div class="dir-media"><img
                                 src="https://image.qwenlm.ai/public_source/1837922c-f02d-458f-afa7-422c9810e8bd/17e6f1185-5459-492f-a8e6-6a060a5f3d70.png"
                                 alt="Инъекционная косметология" loading="lazy"></div>
                         <div class="dir-body">
+                            <span class="n">01</span>
                             <h3>Инъекционная косметология</h3>
-                            <p>Для коррекции возрастных изменений и эстетических задач.</p>
+                            <p class="benefit">Свежесть, увлажнение и деликатная коррекция возрастных изменений.</p>
                             <a class="go" href="https://ladyli17.ru/" target="_blank" rel="noopener">Записаться <span
                                     class="arr">→</span></a>
                         </div>
                     </article>
                     <article class="dir-card reveal">
-                        <div class="dir-media"><span class="dir-num">02</span><img
+                        <div class="dir-media"><img
                                 src="https://image.qwenlm.ai/public_source/1837922c-f02d-458f-afa7-422c9810e8bd/12c222910-f871-4e2d-a99d-33b10c434724.png"
                                 alt="Аппаратная косметология" loading="lazy"></div>
                         <div class="dir-body">
+                            <span class="n">02</span>
                             <h3>Аппаратная косметология</h3>
-                            <p>Современные технологии для ухода, восстановления и улучшения состояния кожи.</p>
+                            <p class="benefit">Тонус, упругость и ровный рельеф кожи — без долгой реабилитации.</p>
                             <a class="go" href="https://ladyli17.ru/" target="_blank" rel="noopener">Записаться <span
                                     class="arr">→</span></a>
                         </div>
                     </article>
                     <article class="dir-card reveal">
-                        <div class="dir-media"><span class="dir-num">03</span><img
+                        <div class="dir-media"><img
                                 src="https://image.qwenlm.ai/public_source/1837922c-f02d-458f-afa7-422c9810e8bd/163573e64-a1b1-4162-ad1b-c6bf701e167e.png"
                                 alt="Лазерная косметология" loading="lazy"></div>
                         <div class="dir-body">
+                            <span class="n">03</span>
                             <h3>Лазерная косметология</h3>
-                            <p>Процедуры с использованием лазерных технологий.</p>
+                            <p class="benefit">Гладкая кожа без нежелательных волос — безопасно, курсом и надолго.</p>
                             <a class="go" href="https://ladyli17.ru/" target="_blank" rel="noopener">Записаться <span
                                     class="arr">→</span></a>
                         </div>
                     </article>
                     <article class="dir-card reveal">
-                        <div class="dir-media"><span class="dir-num">04</span><img
+                        <div class="dir-media"><img
                                 src="https://image.qwenlm.ai/public_source/1837922c-f02d-458f-afa7-422c9810e8bd/11e75c578-ee32-4ac8-90dc-1887e8dd5d0b.png"
                                 alt="Терапевтическая косметология" loading="lazy"></div>
                         <div class="dir-body">
+                            <span class="n">04</span>
                             <h3>Терапевтическая косметология</h3>
-                            <p>Уход и процедуры, направленные на здоровье и качество кожи.</p>
+                            <p class="benefit">Чистая и здоровая кожа: бережно работаем с акне, сухостью и
+                                чувствительностью.</p>
                             <a class="go" href="https://ladyli17.ru/" target="_blank" rel="noopener">Записаться <span
                                     class="arr">→</span></a>
                         </div>
@@ -2178,16 +2426,38 @@
             </div>
         </section>
 
+        <!-- ================= ТАКЖЕ В LADY LI ================= -->
+        <section class="also" id="also">
+            <div class="wrap">
+                <div class="also-in reveal">
+                    <span class="also-label">Также в Lady Li</span>
+                    <div class="also-list">
+                        <a href="#services">Косметология</a>
+                        <a href="#services">Массаж</a>
+                        <a href="#services">Депиляция</a>
+                        <a href="#services">Волосы</a>
+                        <a href="#services">Брови и ресницы</a>
+                        <a href="#services">Ногти</a>
+                    </div>
+                    <a class="also-all" href="#services">Весь каталог <span class="arr">→</span></a>
+                </div>
+            </div>
+        </section>
+
         <!-- ================= CONSULT ================= -->
-        <section class="section dark consult">
+        <section class="consult dark" id="consult">
             <div class="wrap consult-grid">
                 <div class="reveal">
-                    <span class="eyebrow">Это нормально</span>
-                    <h2>Не знаете, что именно вам нужно?</h2>
-                    <p class="q">«Вам не обязательно разбираться в названиях процедур. Расскажите специалисту, чего
-                        хотите добиться, — мы поможем подобрать подходящий вариант.»</p>
-                    <a class="btn btn-light" href="https://ladyli17.ru/" target="_blank" rel="noopener">Записаться на
-                        консультацию <span class="arr">→</span></a>
+                    <span class="eyebrow">Мы рядом на каждом шаге</span>
+                    <h2 class="consult-h2">Не знаете, что именно<br>вам нужно?</h2>
+                    <div class="consult-help serif">Мы поможем.</div>
+                    <p class="q">Вам не обязательно разбираться в названиях процедур. Расскажите специалисту, чего
+                        хотите добиться, — мы подберём вариант, который подходит именно вам.</p>
+                    <div class="consult-actions">
+                        <a class="btn btn-light btn-lg" href="https://ladyli17.ru/" target="_blank"
+                            rel="noopener">Записаться на консультацию <span class="arr">→</span></a>
+                        <a class="consult-call" href="tel:+79232623600">или просто позвоните нам</a>
+                    </div>
                 </div>
                 <div class="consult-media reveal">
                     <div class="frame"></div>
@@ -2268,54 +2538,108 @@
                 <div class="prices-foot reveal">
                     <a class="btn btn-primary" href="https://ladyli17.ru/" target="_blank" rel="noopener">Все цены <span
                             class="arr">→</span></a>
-                    <a class="btn btn-outline" href="#faq">Не знаю, что выбрать</a>
+                    <a class="btn btn-outline" href="#consult">Не знаю, что выбрать</a>
                 </div>
             </div>
         </section>
 
-        <!-- ================= WHY ================= -->
+        <!-- ================= WHY — ДОКАЗАТЕЛЬСТВА ================= -->
         <section class="section" id="why" style="padding-top:0">
-            <div class="wrap why-grid">
-                <div class="why-left reveal">
+            <div class="wrap">
+                <div class="why-head reveal">
                     <span class="num">04 /</span>
                     <span class="eyebrow" style="margin-left:16px">Доказательства</span>
-                    <h2 class="h2">Почему <em>Lady Li</em></h2>
-                    <p class="lead">Не абстрактные обещания, а то, что можно увидеть и проверить на первом же визите.
-                    </p>
-                    <a class="btn btn-primary" style="margin-top:30px" href="https://ladyli17.ru/" target="_blank"
-                        rel="noopener">Записаться <span class="arr">→</span></a>
+                    <h2 class="h2">Почему Lady Li — <em>потому что можно проверить</em></h2>
+                    <p class="lead">Не абстрактные обещания, а цифры, документы и оборудование, которые стоят за каждой
+                        процедурой.</p>
                 </div>
-                <div data-stagger>
-                    <div class="why-item reveal"><span class="n">01</span>
-                        <div>
-                            <h3>Экспертный подход</h3>
-                            <p>Процедура подбирается под конкретную задачу, а не просто продаётся как услуга.</p>
+
+                <!-- TODO: заменить моковые показатели на реальные данные салона -->
+                <div class="stats-band" data-stagger>
+                    <div class="stat reveal">
+                        <div class="v" data-count="7">7</div>
+                        <div class="l">лет опыта заботы о красоте</div>
+                    </div>
+                    <div class="stat reveal">
+                        <div class="v" data-count="12">12</div>
+                        <div class="l">специалистов в команде</div>
+                    </div>
+                    <div class="stat reveal">
+                        <div class="v" data-count="4800" data-suffix="+">4 800+</div>
+                        <div class="l">довольных клиентов</div>
+                    </div>
+                    <div class="stat reveal">
+                        <div class="v" data-count="15000" data-suffix="+">15 000+</div>
+                        <div class="l">выполненных процедур</div>
+                    </div>
+                    <div class="stat reveal">
+                        <div class="v" data-count="4">4</div>
+                        <div class="l">года нашей школе обучения</div>
+                    </div>
+                </div>
+
+                <div class="proof-grid" data-stagger>
+                    <div class="proof-col reveal">
+                        <div class="k">Официально</div>
+                        <div class="proof-row"><span class="ic">✓</span>
+                            <div><b>Медицинская лицензия</b><span class="sub">О/Л № Л035-01287-17/00613582</span></div>
+                        </div>
+                        <div class="proof-row"><span class="ic">✓</span>
+                            <div><b>ООО «КОСМЕД»</b><span class="sub">ИНН 1700001700 — работаем в правовом поле</span>
+                            </div>
+                        </div>
+                        <div class="proof-row"><span class="ic">✓</span>
+                            <div><b>Дипломы и сертификаты</b><span class="sub">у каждого специалиста — подтверждённая
+                                    квалификация</span></div>
+                        </div>
+                        <div class="proof-row"><span class="ic">✓</span>
+                            <div><b>Стерильность по СанПиН</b><span class="sub">сухожаровой шкаф и одноразовые
+                                    расходники</span></div>
                         </div>
                     </div>
-                    <div class="why-item reveal"><span class="n">02</span>
-                        <div>
-                            <h3>Профессиональная косметика</h3>
-                            <p>Используем профессиональные средства и современные протоколы ухода.</p>
+                    <!-- TODO: заменить бренды на реальные, с которыми работает салон -->
+                    <div class="proof-col reveal">
+                        <div class="k">Профессиональная косметика</div>
+                        <div class="proof-row"><span class="ic">✓</span>
+                            <div><b>Christina</b><span class="sub">профессиональные уходы и пилинги, Израиль</span>
+                            </div>
+                        </div>
+                        <div class="proof-row"><span class="ic">✓</span>
+                            <div><b>Holy Land</b><span class="sub">решения для проблемной и возрастной кожи</span></div>
+                        </div>
+                        <div class="proof-row"><span class="ic">✓</span>
+                            <div><b>Medic Control Peel</b><span class="sub">химические пилинги с доказанной
+                                    эффективностью</span></div>
+                        </div>
+                        <div class="proof-row"><span class="ic">✓</span>
+                            <div><b>Aravia Professional</b><span class="sub">массаж, депиляция и уходы за телом</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="why-item reveal"><span class="n">03</span>
-                        <div>
-                            <h3>Специалисты</h3>
-                            <p>За каждой процедурой стоит человек, которому можно доверять.</p>
+                    <!-- TODO: заменить оборудование на реальное оборудование салона -->
+                    <div class="proof-col reveal">
+                        <div class="k">Оборудование</div>
+                        <div class="proof-row"><span class="ic">✓</span>
+                            <div><b>Диодный лазер</b><span class="sub">последнее поколение для эпиляции</span></div>
+                        </div>
+                        <div class="proof-row"><span class="ic">✓</span>
+                            <div><b>RF-лифтинг и микротоки</b><span class="sub">аппаратные методики омоложения</span>
+                            </div>
+                        </div>
+                        <div class="proof-row"><span class="ic">✓</span>
+                            <div><b>УЗ-скраберы</b><span class="sub">комбинированная чистка лица</span></div>
+                        </div>
+                        <div class="proof-row"><span class="ic">✓</span>
+                            <div><b>Сухожаровой стерилизатор</b><span class="sub">полный цикл обработки
+                                    инструментов</span></div>
                         </div>
                     </div>
-                    <div class="why-item reveal"><span class="n">04</span>
-                        <div>
-                            <h3>Всё в одном месте</h3>
-                            <p>Косметология, массаж, депиляция, волосы, ресницы, брови и ногти.</p>
-                        </div>
-                    </div>
-                    <div class="why-item reveal"><span class="n">05</span>
-                        <div>
-                            <h3>Удобная запись</h3>
-                            <p>Записаться можно онлайн в несколько кликов — без звонков и ожидания.</p>
-                        </div>
-                    </div>
+                </div>
+                <p class="proof-note reveal">* Показатели, бренды и оборудование указаны для примера — перед публикацией
+                    заменим на актуальные данные салона.</p>
+                <div class="reveal" style="margin-top:26px">
+                    <a class="btn btn-primary" href="https://ladyli17.ru/" target="_blank" rel="noopener">Записаться
+                        <span class="arr">→</span></a>
                 </div>
             </div>
         </section>
@@ -2489,12 +2813,9 @@
                     <span class="num">08 /</span>
                     <span class="eyebrow" style="margin-left:16px">О салоне</span>
                     <div class="mission">«Творить красоту любовью.»</div>
-                    <p class="txt">Lady Li — пространство профессиональной красоты в Кызыле. Мы объединили современную
-                        косметологию, эстетику и высокий сервис, чтобы каждая гостья чувствовала: здесь о ней
-                        позаботятся.</p>
-                    <p class="txt">Мы не работаем по шаблону. Сначала — диагностика и разговор о ваших целях, затем —
-                        процедуры, которые подходят именно вашей коже. Спокойно, тепло и по-настоящему профессионально.
-                    </p>
+                    <p class="txt">Lady Li — пространство профессиональной красоты в Кызыле. Мы объединили косметологию,
+                        эстетику и высокий сервис, чтобы каждая гостья чувствовала: здесь о ней позаботятся. Сначала —
+                        диагностика и разговор о ваших целях, затем — процедуры, которые подходят именно вашей коже.</p>
                     <div class="chips">
                         <span class="chip">6 направлений красоты</span>
                         <span class="chip">Собственная школа обучения</span>
@@ -2530,66 +2851,78 @@
             </div>
         </section>
 
-        <!-- ================= SERVICES ================= -->
+        <!-- ================= КАТАЛОГ ================= -->
         <section class="section" id="services">
             <div class="wrap">
                 <div class="reveal">
                     <span class="num">09 /</span>
-                    <span class="eyebrow" style="margin-left:16px">Всё для ухода</span>
-                    <h2 class="h2">Всё для вашего ухода — <em>в одном месте</em></h2>
+                    <span class="eyebrow" style="margin-left:16px">Каталог</span>
+                    <h2 class="h2-xl">Все услуги <em>Lady Li</em></h2>
+                    <p class="lead">Шесть направлений — всё для вашего ухода в одном месте.</p>
                 </div>
-                <div class="srv-grid" data-stagger>
-                    <a class="srv-card reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
-                        <div class="top">
-                            <h3>Косметология</h3><span class="n">01</span>
-                        </div>
-                        <div class="subs">
-                            <span>чистки</span><span>пилинги</span><span>инъекции</span><span>лазер</span><span>уходы</span>
-                        </div>
-                        <span class="go">Записаться <span class="arr">→</span></span>
-                    </a>
-                    <a class="srv-card reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
-                        <div class="top">
-                            <h3>Массаж</h3><span class="n">02</span>
-                        </div>
-                        <div class="subs">
-                            <span>классический</span><span>антицеллюлитный</span><span>спортивный</span><span>аппаратный</span>
+                <div class="cat-list" data-stagger>
+                    <a class="cat-row reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
+                        <span class="n">01</span>
+                        <div>
+                            <h3>Косметология</h3>
+                            <div class="subs">
+                                <span>Чистки</span><span>Пилинги</span><span>Аппаратная</span><span>Инъекционная</span><span>Лазерные
+                                    процедуры</span><span>Уходы</span></div>
                         </div>
                         <span class="go">Записаться <span class="arr">→</span></span>
                     </a>
-                    <a class="srv-card reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
-                        <div class="top">
-                            <h3>Депиляция</h3><span class="n">03</span>
-                        </div>
-                        <div class="subs"><span>шугаринг</span><span>ваксинг</span><span>тридинг</span></div>
-                        <span class="go">Записаться <span class="arr">→</span></span>
-                    </a>
-                    <a class="srv-card reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
-                        <div class="top">
-                            <h3>Волосы</h3><span class="n">04</span>
-                        </div>
-                        <div class="subs">
-                            <span>стрижки</span><span>окрашивание</span><span>колорирование</span><span>укладка</span>
+                    <a class="cat-row reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
+                        <span class="n">02</span>
+                        <div>
+                            <h3>Массаж</h3>
+                            <div class="subs">
+                                <span>Классический</span><span>Антицеллюлитный</span><span>Спортивный</span><span>Аппаратный</span>
+                            </div>
                         </div>
                         <span class="go">Записаться <span class="arr">→</span></span>
                     </a>
-                    <a class="srv-card reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
-                        <div class="top">
-                            <h3>Брови и ресницы</h3><span class="n">05</span>
-                        </div>
-                        <div class="subs">
-                            <span>ламинирование</span><span>наращивание</span><span>ботокс</span><span>биотатуаж</span>
+                    <a class="cat-row reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
+                        <span class="n">03</span>
+                        <div>
+                            <h3>Депиляция</h3>
+                            <div class="subs">
+                                <span>Шугаринг</span><span>Ваксинг</span><span>Тридинг</span><span>Эпилятор</span></div>
                         </div>
                         <span class="go">Записаться <span class="arr">→</span></span>
                     </a>
-                    <a class="srv-card reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
-                        <div class="top">
-                            <h3>Ногти</h3><span class="n">06</span>
+                    <a class="cat-row reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
+                        <span class="n">04</span>
+                        <div>
+                            <h3>Волосы</h3>
+                            <div class="subs">
+                                <span>Стрижка</span><span>Окрашивание</span><span>Колорирование</span><span>Укладка</span>
+                            </div>
                         </div>
-                        <div class="subs">
-                            <span>маникюр</span><span>педикюр</span><span>наращивание</span><span>уход</span></div>
                         <span class="go">Записаться <span class="arr">→</span></span>
                     </a>
+                    <a class="cat-row reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
+                        <span class="n">05</span>
+                        <div>
+                            <h3>Брови и ресницы</h3>
+                            <div class="subs"><span>Биотатуаж бровей</span><span>Ламинирование
+                                    ресниц</span><span>Наращивание</span><span>Коллагенирование</span><span>Ботокс</span>
+                            </div>
+                        </div>
+                        <span class="go">Записаться <span class="arr">→</span></span>
+                    </a>
+                    <a class="cat-row reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
+                        <span class="n">06</span>
+                        <div>
+                            <h3>Ногти</h3>
+                            <div class="subs"><span>Маникюр</span><span>Педикюр</span><span>Наращивание</span><span>Уход
+                                    и лечение</span></div>
+                        </div>
+                        <span class="go">Записаться <span class="arr">→</span></span>
+                    </a>
+                </div>
+                <div class="cat-foot reveal">
+                    <a class="btn btn-primary" href="https://ladyli17.ru/" target="_blank" rel="noopener">Записаться
+                        онлайн <span class="arr">→</span></a>
                 </div>
             </div>
         </section>
@@ -2862,6 +3195,28 @@
             function setPos(v) { ba.style.setProperty('--pos', v + '%'); }
             baRange.addEventListener('input', function (e) { setPos(e.target.value); });
             setPos(50);
+
+            /* count-up stats */
+            document.querySelectorAll('[data-count]').forEach(function (el) {
+                var target = parseFloat(el.dataset.count);
+                var suffix = el.dataset.suffix || '';
+                function fmt(n) { return Math.round(n).toLocaleString('ru-RU'); }
+                el.textContent = fmt(0) + suffix;
+                var cIO = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) {
+                        if (!e.isIntersecting) return;
+                        cIO.unobserve(el);
+                        var t0 = performance.now(), dur = 1600;
+                        (function step(t) {
+                            var k = Math.min(1, (t - t0) / dur);
+                            var ease = 1 - Math.pow(1 - k, 3);
+                            el.textContent = fmt(target * ease) + suffix;
+                            if (k < 1) requestAnimationFrame(step);
+                        })(t0);
+                    });
+                }, { threshold: .5 });
+                cIO.observe(el);
+            });
 
             /* FAQ accordion */
             document.querySelectorAll('.faq-q').forEach(function (btn) {
