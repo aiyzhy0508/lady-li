@@ -1640,10 +1640,23 @@
             padding: 26px 0;
             display: flex;
             justify-content: space-between;
-            gap: 14px;
+            align-items: center;
+            gap: 14px 28px;
             flex-wrap: wrap;
             font-size: 12.5px;
             color: #7C6F63
+        }
+
+        .f-bottom a {
+            color: #B9ACA0;
+            text-decoration: underline;
+            text-decoration-color: rgba(185, 172, 160, .35);
+            text-underline-offset: 3px;
+            transition: color .3s
+        }
+
+        .f-bottom a:hover {
+            color: var(--ivory)
         }
 
         /* mobile bar */
@@ -2410,20 +2423,22 @@
                 </div>
                 <div>
                     <h4>Навигация</h4>
-                    <a href="#cosmetology">Косметология</a>
-                    <a href="#services">Все услуги</a>
+                    <a href="#services">Услуги</a>
                     <a href="#about">О Lady Li</a>
                     <a href="#team">Специалисты</a>
+                    <a href="#reviews">Отзывы</a>
                     <a href="#education">Обучение</a>
+                    <a href="#faq">Частые вопросы</a>
                     <a href="#contacts">Контакты</a>
                 </div>
                 <div>
                     <h4>Услуги</h4>
-                    <a href="#cosmetology">Инъекционная косметология</a>
-                    <a href="#cosmetology">Аппаратная косметология</a>
-                    <a href="#cosmetology">Лазерная косметология</a>
-                    <a href="#cosmetology">Терапевтическая косметология</a>
-                    <a href="#prices">Популярные процедуры</a>
+                    <a href="#cosmetology">Косметология</a>
+                    <a href="#services">Массаж и тело</a>
+                    <a href="#services">Депиляция</a>
+                    <a href="#services">Волосы</a>
+                    <a href="#services">Брови и ресницы</a>
+                    <a href="#services">Ногти</a>
                 </div>
                 <div>
                     <h4>Контакты</h4>
@@ -2436,6 +2451,7 @@
             <div class="f-bottom">
                 <span>© <span id="year"></span> Lady Li · ООО «КОСМЕД» · ИНН 1700001700 · О/Л №
                     Л035-01287-17/00613582</span>
+                <a href="privacy-policy.html">Политика обработки персональных данных</a>
                 <span>Имеются противопоказания. Необходима консультация специалиста.</span>
             </div>
         </div>
