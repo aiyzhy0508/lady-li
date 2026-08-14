@@ -627,18 +627,6 @@
             font-size: .95rem
         }
 
-        .pick {
-            grid-column: 2;
-            justify-self: start;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 8px;
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--wine)
-        }
-
         .pop {
             border-top: 1px solid var(--line);
             padding-top: 18px;
@@ -678,26 +666,6 @@
             gap: 24px;
             flex-wrap: wrap;
             margin-top: 2px
-        }
-
-        .all-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13.5px;
-            font-weight: 700;
-            color: var(--wine)
-        }
-
-        .all-link .arr,
-        .pick .arr,
-        .go .arr {
-            transition: transform .3s
-        }
-
-        .all-link:hover .arr,
-        .pick:hover .arr {
-            transform: translateX(5px)
         }
 
         .m-grid {
@@ -808,6 +776,10 @@
 
         .m-row:hover .go .arr {
             transform: translateX(5px)
+        }
+
+        .go .arr {
+            transition: transform .3s
         }
 
         /* consult dark */
@@ -1850,10 +1822,6 @@
                 gap: 6px
             }
 
-            .pick {
-                grid-column: 1
-            }
-
             .bday-in {
                 grid-template-columns: 1fr;
                 padding: 32px 26px;
@@ -1926,7 +1894,7 @@
                     <div class="hero-actions">
                         <a class="btn btn-primary" href="https://ladyli17.ru/" target="_blank" rel="noopener">Записаться
                             <span class="arr">→</span></a>
-                        <a class="btn btn-outline" href="#services">Посмотреть услуги</a>
+                        <a class="btn btn-outline" href="#cosmetology">Посмотреть услуги</a>
                     </div>
                     <div class="hero-proof">
                         <span class="p-item"><span class="stars" aria-hidden="true"><svg viewBox="0 0 20 20"
@@ -2020,8 +1988,6 @@
                             <span class="lab">С чем работаем</span>
                             <span class="vals">Акне · Пигментация · Возрастные изменения · Сухость · Потеря
                                 упругости</span>
-                            <a class="pick" href="https://ladyli17.ru/" target="_blank" rel="noopener">Подобрать
-                                процедуру <span class="arr">→</span></a>
                         </div>
                         <div class="pop" id="prices">
                             <span class="lab">Популярное</span>
@@ -2035,8 +2001,6 @@
                         <div class="cosmo-cta">
                             <a class="btn btn-primary btn-sm" href="https://ladyli17.ru/" target="_blank"
                                 rel="noopener">Записаться <span class="arr">→</span></a>
-                            <a class="all-link" href="https://ladyli17.ru/" target="_blank" rel="noopener">Все процедуры
-                                <span class="arr">→</span></a>
                         </div>
                     </div>
                 </article>
@@ -2049,7 +2013,7 @@
                         </div>
                         <span class="tagline">Расслабление, тонус, коррекция</span>
                         <span class="subs">Классический · Антицеллюлитный · Спортивный · Аппаратный</span>
-                        <span class="go">Подробнее <span class="arr">→</span></span>
+                        <span class="go">Записаться <span class="arr">→</span></span>
                     </a>
                     <a class="m-card reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
                         <div class="top"><span class="n">03</span>
@@ -2057,14 +2021,14 @@
                         </div>
                         <span class="tagline">Гладкость и уход</span>
                         <span class="subs">Шугаринг · Ваксинг · Тридинг · Эпиляция</span>
-                        <span class="go">Подробнее <span class="arr">→</span></span>
+                        <span class="go">Записаться <span class="arr">→</span></span>
                     </a>
                     <a class="m-card reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
                         <div class="top"><span class="n">04</span>
                             <h3>Волосы</h3>
                         </div>
                         <span class="subs">Стрижки · Окрашивание · Колорирование · Укладки</span>
-                        <span class="go">Подробнее <span class="arr">→</span></span>
+                        <span class="go">Записаться <span class="arr">→</span></span>
                     </a>
                     <a class="m-card reveal" href="https://ladyli17.ru/" target="_blank" rel="noopener">
                         <div class="top"><span class="n">05</span>
@@ -2072,7 +2036,7 @@
                         </div>
                         <span class="tagline">Форма, выразительность, уход</span>
                         <span class="subs">Биотатуаж · Ламинирование · Наращивание · Уход</span>
-                        <span class="go">Подробнее <span class="arr">→</span></span>
+                        <span class="go">Записаться <span class="arr">→</span></span>
                     </a>
                 </div>
 
@@ -2081,7 +2045,7 @@
                     <span class="n">06</span>
                     <h3>Ногти</h3>
                     <span class="subs">Маникюр · Педикюр · Наращивание · Уход и лечение</span>
-                    <span class="go">Подробнее <span class="arr">→</span></span>
+                    <span class="go">Записаться <span class="arr">→</span></span>
                 </a>
             </div>
         </section>
@@ -2172,7 +2136,7 @@
                             <p class="spec-line">Специализация: аппаратная и эстетическая косметология, чистки и уходы.
                             </p>
                             <a class="btn btn-outline btn-sm" href="https://ladyli17.ru/" target="_blank"
-                                rel="noopener">Записаться к специалисту</a>
+                                rel="noopener">Записаться</a>
                         </div>
                     </article>
                     <article class="spec-card reveal">
@@ -2184,7 +2148,7 @@
                             <p class="spec-line">Специализация: терапевтическая косметология, пилинги, проблемная кожа.
                             </p>
                             <a class="btn btn-outline btn-sm" href="https://ladyli17.ru/" target="_blank"
-                                rel="noopener">Записаться к специалисту</a>
+                                rel="noopener">Записаться</a>
                         </div>
                     </article>
                     <article class="spec-card reveal">
@@ -2195,7 +2159,7 @@
                             <h3>Долума</h3>
                             <p class="spec-line">Специализация: лазерная эпиляция, массаж и коррекция фигуры.</p>
                             <a class="btn btn-outline btn-sm" href="https://ladyli17.ru/" target="_blank"
-                                rel="noopener">Записаться к специалисту</a>
+                                rel="noopener">Записаться</a>
                         </div>
                     </article>
                 </div>
