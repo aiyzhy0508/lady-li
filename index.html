@@ -227,6 +227,11 @@
             box-shadow: 0 8px 30px rgba(38, 33, 29, .06)
         }
 
+        /* когда мобильное меню открыто — шапка (и кнопка-крестик) должна быть поверх него */
+        body.menu-open #header {
+            z-index: 1102
+        }
+
         .header-in {
             display: flex;
             align-items: center;
@@ -300,7 +305,8 @@
             border: 1px solid var(--line);
             border-radius: 50%;
             position: relative;
-            z-index: 1101
+            z-index: 1101;
+            flex: none
         }
 
         .burger span {
@@ -336,9 +342,10 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 40px 28px;
+            padding: 88px 28px 40px;
             transform: translateY(-102%);
-            transition: transform .55s cubic-bezier(.7, 0, .25, 1)
+            transition: transform .55s cubic-bezier(.7, 0, .25, 1);
+            overflow-y: auto
         }
 
         body.menu-open .m-menu {
@@ -374,6 +381,57 @@
             font-size: 14px
         }
 
+        /* кнопка «Назад» внутри мобильного меню */
+        .m-back {
+            position: absolute;
+            top: 22px;
+            left: 24px;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            gap: 11px;
+            font-family: 'Manrope', sans-serif;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--ink);
+            background: var(--ivory2);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            padding: 9px 22px 9px 9px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity .4s, transform .4s, border-color .3s, color .3s
+        }
+
+        body.menu-open .m-back {
+            opacity: 1;
+            transform: none;
+            transition-delay: .2s
+        }
+
+        .m-back .ic {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--wine);
+            color: #F7EFE6;
+            display: grid;
+            place-items: center;
+            font-size: 14px;
+            line-height: 1;
+            flex: none;
+            transition: transform .3s
+        }
+
+        .m-back:hover {
+            border-color: rgba(110, 43, 59, .45);
+            color: var(--wine)
+        }
+
+        .m-back:hover .ic {
+            transform: translateX(-3px)
+        }
+
         /* hero */
         .hero {
             padding: 170px 0 90px;
@@ -401,7 +459,7 @@
         }
 
         .hero h1 {
-            font-size: clamp(2.8rem, 6.2vw, 4.9rem);
+            font-size: clamp(2.6rem, 6.2vw, 4.9rem);
             font-weight: 600
         }
 
@@ -575,7 +633,8 @@
             padding: 44px 48px;
             display: flex;
             flex-direction: column;
-            gap: 22px
+            gap: 22px;
+            min-width: 0
         }
 
         .cosmo-head {
@@ -649,6 +708,10 @@
             font-size: .95rem
         }
 
+        .pop-row .pn {
+            min-width: 0
+        }
+
         .pop-row .dots {
             flex: 1;
             border-bottom: 1px dotted rgba(38, 33, 29, .32);
@@ -681,7 +744,8 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
-            transition: background .3s
+            transition: background .3s;
+            min-width: 0
         }
 
         .m-card .top {
@@ -1114,7 +1178,8 @@
             padding: 32px;
             display: flex;
             flex-direction: column;
-            gap: 16px
+            gap: 16px;
+            min-width: 0
         }
 
         .rev-card.summary {
@@ -1441,7 +1506,8 @@
             border: 1px solid var(--line);
             border-radius: var(--radius);
             background: var(--ivory);
-            padding: 38px
+            padding: 38px;
+            min-width: 0
         }
 
         .con-card .row {
@@ -1468,7 +1534,8 @@
 
         .con-card .v {
             font-size: 1.05rem;
-            font-weight: 600
+            font-weight: 600;
+            min-width: 0
         }
 
         .con-card .v a:hover {
@@ -1494,6 +1561,7 @@
             border-radius: var(--radius);
             overflow: hidden;
             min-height: 420px;
+            width: 100%;
             background: #EFE7DB
         }
 
@@ -1509,9 +1577,11 @@
         .map-actions {
             position: absolute;
             left: 16px;
+            right: 16px;
             bottom: 16px;
             display: flex;
             gap: 10px;
+            flex-wrap: wrap;
             z-index: 2
         }
 
@@ -1659,22 +1729,6 @@
             color: var(--ivory)
         }
 
-        /* mobile bar */
-        .m-bar {
-            position: fixed;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 950;
-            display: none;
-            grid-template-columns: 1fr 1.3fr;
-            gap: 10px;
-            padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
-            background: rgba(245, 240, 232, .94);
-            backdrop-filter: blur(12px);
-            border-top: 1px solid var(--line)
-        }
-
         /* reveal */
         .reveal {
             opacity: 0;
@@ -1736,14 +1790,6 @@
                 grid-template-columns: 1fr
             }
 
-            .m-bar {
-                display: grid
-            }
-
-            body {
-                padding-bottom: 76px
-            }
-
             .section {
                 padding: 88px 0
             }
@@ -1791,6 +1837,186 @@
             .map-card {
                 min-height: 340px
             }
+
+            .ba {
+                aspect-ratio: 4/3
+            }
+        }
+
+        @media(max-width:480px) {
+            .wrap {
+                padding: 0 20px
+            }
+
+            .section {
+                padding: 72px 0
+            }
+
+            .logo {
+                font-size: 1.25rem
+            }
+
+            .logo-sub {
+                letter-spacing: .2em;
+                font-size: 8.5px
+            }
+
+            .hero {
+                padding: 112px 0 70px
+            }
+
+            .hero h1 {
+                font-size: clamp(2.2rem, 8.6vw, 2.9rem)
+            }
+
+            .hero-grid {
+                gap: 44px
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px
+            }
+
+            .hero-actions .btn {
+                justify-content: center
+            }
+
+            .hero-proof {
+                gap: 8px 18px
+            }
+
+            .hero-card {
+                left: 12px;
+                bottom: 22px;
+                min-width: 0;
+                padding: 14px 16px
+            }
+
+            .btn {
+                padding: 14px 24px;
+                font-size: 14px
+            }
+
+            .btn-sm {
+                padding: 10px 16px;
+                font-size: 12.5px
+            }
+
+            .cosmo-body {
+                padding: 26px 20px 30px
+            }
+
+            .cosmo-head h3 {
+                font-size: 1.9rem
+            }
+
+            .pop-row {
+                font-size: .9rem
+            }
+
+            .m-card h3,
+            .m-row h3 {
+                font-size: 1.7rem
+            }
+
+            .m-row {
+                gap: 10px 20px
+            }
+
+            .m-row .subs {
+                min-width: 0;
+                flex-basis: 100%
+            }
+
+            .ba-knob {
+                width: 42px;
+                height: 42px
+            }
+
+            .why-item {
+                grid-template-columns: 44px 1fr;
+                gap: 14px
+            }
+
+            .rev-card {
+                padding: 26px 22px
+            }
+
+            .rev-card.summary .big {
+                font-size: 3.6rem
+            }
+
+            .edu-badges .chip {
+                padding: 8px 14px;
+                font-size: 12px
+            }
+
+            .bday-in {
+                padding: 28px 22px;
+                gap: 22px
+            }
+
+            .faq-q {
+                font-size: 1.2rem;
+                padding: 20px 2px
+            }
+
+            .con-card {
+                padding: 28px 22px
+            }
+
+            .con-card .row {
+                flex-direction: column;
+                gap: 6px
+            }
+
+            .con-card .k {
+                min-width: 0;
+                padding-top: 0
+            }
+
+            .map-card {
+                min-height: 320px
+            }
+
+            .map-actions {
+                left: 12px;
+                right: 12px;
+                bottom: 12px;
+                gap: 8px
+            }
+
+            .map-actions .btn {
+                flex: 1 1 auto
+            }
+
+            .final {
+                padding: 100px 0
+            }
+
+            .final h2 {
+                font-size: clamp(2.2rem, 8vw, 2.8rem)
+            }
+
+            .final .btn {
+                padding: 18px 28px !important;
+                font-size: 15px !important;
+                max-width: 100%
+            }
+
+            .m-menu {
+                padding: 84px 22px 32px
+            }
+
+            .m-menu a.m-link {
+                font-size: 1.6rem
+            }
+
+            .f-bottom {
+                font-size: 11.5px
+            }
         }
     </style>
     <noscript>
@@ -1829,6 +2055,8 @@
 
     <!-- mobile menu -->
     <div class="m-menu" id="mMenu">
+        <button class="m-back" id="mBack" type="button" aria-label="Закрыть меню"><span class="ic">←</span>
+            Назад</button>
         <a class="m-link" href="#services" style="transition-delay:.08s">Услуги</a>
         <a class="m-link" href="#about" style="transition-delay:.14s">О нас</a>
         <a class="m-link" href="#team" style="transition-delay:.2s">Специалисты</a>
@@ -2457,12 +2685,6 @@
         </div>
     </footer>
 
-    <!-- mobile bottom bar -->
-    <div class="m-bar">
-        <a class="btn btn-outline" href="tel:+79232623600">Позвонить</a>
-        <a class="btn btn-primary" href="https://ladyli17.ru/" target="_blank" rel="noopener">Записаться</a>
-    </div>
-
     <script>
         (function () {
             "use strict";
@@ -2491,6 +2713,12 @@
             document.querySelectorAll('.m-menu a').forEach(function (a) {
                 a.addEventListener('click', function () { document.body.classList.remove('menu-open'); });
             });
+
+            /* кнопка «Назад» внутри мобильного меню */
+            var mBack = document.getElementById('mBack');
+            if (mBack) {
+                mBack.addEventListener('click', function () { document.body.classList.remove('menu-open'); });
+            }
 
             /* reveal on scroll + stagger */
             document.querySelectorAll('[data-stagger]').forEach(function (parent) {
